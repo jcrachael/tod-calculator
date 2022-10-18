@@ -1,0 +1,109 @@
+@import url(https://fonts.googleapis.com/css?family=Orbitron&display=swap);
+
+body {
+    font-family: 'Orbitron', 'Courier New', Courier, monospace;
+    background-color: rgb(179, 179, 179);
+}
+
+h1 {
+    font-family: 'Orbitron', 'Courier New', Courier, monospace;
+    text-align: center;
+    padding: 50px;
+}
+
+p, button {
+    font-family: 'Orbitron', 'Courier New', Courier, monospace;
+}
+
+
+#calculator {
+    width: 500px;
+    height: 650px;
+    border: 1px black solid;
+    margin: auto;
+    border-radius: 25px;
+    background-color: #ddd;
+}
+
+#screen-container {
+    margin-top:15px;
+    margin-left: 15px;
+    width: 470px;
+    height:150px;
+    border: 1px black solid;
+    border-radius: 25px;
+    background-color: rgb(149, 179, 137);
+}
+
+#screen {
+    margin-top: 12px;
+    margin-left: 20px;
+    width: 430px;
+    height: 125px;
+    text-align: right;
+    overflow: auto;
+}
+
+.screentext {
+    display: inline;
+    font-size: 36pt;
+}
+
+#grid {
+    border: 1px black solid;
+    border-radius: 25px;
+    width: 445px;
+    height: 450px;
+    margin-top: 15px;
+    margin-left: 15px;
+    display: grid;
+    grid-template-columns: 4;
+    grid-template-rows: 4;
+    column-gap: normal;
+    padding-left: 20px;
+    background-color: #888;
+}
+
+.grid-item {
+    align-self: center;
+    text-align: center;
+    height: 75px;
+    width: 75px;
+    border: 1px black solid;
+    border-radius: 15px;
+    font-size: 36pt;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #ddd;
+}
+
+.grid-item:active {
+    background-color: #888;
+}
+
+.number {
+    color: #333;
+}
+
+.operator {
+    color: rgb(255, 67, 67);
+}
+
+#btn-1 {
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+#btn-2, #btn-0 {
+    grid-column-start: 2;
+    grid-column-end: 2;
+}
+#btn-3 {
+    grid-column-start: 3;
+    grid-column-end: 3;
+}
+
+#btn-add, #btn-subtract {
+    grid-column-start: 4;
+    grid-column-end: 4;
+}
