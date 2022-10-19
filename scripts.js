@@ -1,99 +1,128 @@
-// Define basic mathematical functions
-function add(x, y) {
-    return x + y;
-}
+// create Calculator class 
+class Calculator {
+    constructor(prevOperandText, currentOperandText) {
+        this.prevOperandText = prevOperandText;
+        this.currentOperandText = currentOperandText;
+        this.clear();
+    };
 
-function subtract(x, y) {
-    return x - y;
-}
+    //clear the screen
+    clear() {
+        this.currentOperand = '';
+        this.previousOperand = '';
+        this.operation = undefined;
+    };
 
-function multiply(x, y) {
-    return x*y;
-}
+    appendNumber(number) {
+        if (number === '.' && this.currentOperand.includes('.')) return 
+        this.currentOperand = this.currentOperand.toString() + number.toString();
+    };
 
-function divide(x, y) {
-    return x/y;
-}
+    chooseOperation(operation) {
+        if (this.currentOperand === '') return;
+        if (this.previousOperand !== '') {
+            this.compute();
+        }
+        this.operation = operation;
+        this.previousOperand = this.currentOperand;
+        this.currentOperand = '';
+    };
 
-// define Operator function
-function operate(operator, x, y) {
-    if (operator === 'add') {
-        return add(x, y);
-    } else if (operator === 'subtract') {
-        return subtract(x, y);
-    } else if (operator === 'multiply') {
-        return multiply(x, y);
-    } else if (operator === 'divide') {
-        return divide(x, y);
-    } else {
-        return "Error";
-    }
-}
+    // define Operator function
+    compute() {
+        let computation;
+        const prev = parseFloat(this.previousOperand);
+        const current = parseFloat(this.currentOperand);
+        if (isNaN(prev) || isNaN(current)) return;
+        // Define basic mathematical functions
+        switch (this.operation) {
+            case '+':
+                computation = prev + current;
+                break;
+            case '−':
+                computation = prev - current;
+                break;
+            case '×':
+                computation = prev * current;
+                break;
+            case '÷':
+                computation = prev / current;
+                break;
+            default:
+                return;
+        }
+        this.previousOperand = computation;
+        this.operation = undefined;
+        this.currentOperand = '';
+    };
+
+    getDisplayNumber(number) {
+        const stringNumber = number.toString();
+        const integerDigits = parseFloat(stringNumber.split('.')[0]);
+        const decimalDigits = stringNumber.split('.')[1];
+        let integerDisplay;
+        if (isNaN(integerDigits)) {
+            integerDisplay = '';
+        } else {
+            integerDisplay = integerDigits.toLocaleString('en', {maximumFractionDigits: 0});
+        }
+        if (decimalDigits != null) {
+            return `${integerDisplay}.${decimalDigits}`;
+        } else {
+            return integerDisplay;
+        }
+    };
+    
+    updateDisplay() {
+        this.currentOperandText.innerText = this.getDisplayNumber(this.currentOperand);
+        if (this.operation != null) {
+            this.prevOperandText.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+        } else {
+            this.prevOperandText.innerText = this.previousOperand;
+        };
+    };   
+};
+
+
 
 // DOMContentLoaded
 document.addEventListener('DOMContentLoaded', (event) => {
     // track variables
-    let x = 0;
-    let y = 0;
-    let numArray = []
-    // get screen
-    let screen = document.getElementById('screen');
-    // get all buttons
-    let buttons = document.querySelectorAll('button');
+    const numberButtons = document.querySelectorAll('[data-number]');
+    const operationButtons = document.querySelectorAll('[data-operation]');
+    const equalsButton = document.querySelector('[data-equals]');
+    const clearButton = document.querySelector('[data-clear]');
+    const prevOperandText = document.querySelector('[data-previous-operand]');
+    const currentOperandText = document.querySelector('[data-current-operand]');
 
-    // loop through each button 
-    for (let i = 0; i < buttons.length; i++) {
-        // for each button, make a new array
-        let button = buttons[i];
-        
-
-        // add event listener to each buttpn
-        button.addEventListener("click", function() {
-            // on click, add number to screen
-            screen.innerHTML += '<p class="screentext">' + button.innerText + '</p>';
-            
-            // check if number class
-            if (button.classList.contains('number')) {
-                // if no x already, assign number to x
-                x = parseInt(button.innerText);
-                
-                console.log(x + ' was pressed');
-
-                // add num to array
-                numArray.push(x);
-                console.log(numArray);
-            };
-            
-            // check if operator class
-            if (button.classList.contains('operator')) {
-                
-                // check if operator is clear
-                if (button.id === 'btn-clear') {
-                    // clear screen
-                    screen.innerHTML = '';
-                    // reset vars
-                    numArray = [];
-                   
-                } else if (button.id === 'btn-add') {
-                    console.log('the addition button was pressed');
-                    let xArray = numArray;
-                    console.log(operate('add', x, y));
-                } else if (button.id === 'btn-subtract') {
-                    console.log('the subtract button was pressed');
-                } else if (button.id === 'btn-multiply') {
-                    console.log('the multiply button was pressed');
-                } else if (button.id === 'btn-divide') {
-                    console.log('the divide button was pressed');
-                } else {
-                    console.log('the equals button was pressed');
-                }
-            }; 
-            
-        });
-        
-    };
+    const calculator = new Calculator(prevOperandText, currentOperandText);
     
-    
+
+    // add event listeners to each button
+    numberButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            calculator.appendNumber(button.innerText);
+            calculator.updateDisplay();
+        })
+    });
+
+    operationButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            calculator.chooseOperation(button.innerText);
+            calculator.updateDisplay();
+        })
+    });
+
+    equalsButton.addEventListener('click', button => {
+        calculator.compute();
+        calculator.updateDisplay();
+    });
+
+    clearButton.addEventListener('click', button => {
+        calculator.clear();
+        calculator.updateDisplay();
+    });
+
 
     
   });
