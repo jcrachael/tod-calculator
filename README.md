@@ -13,3 +13,6 @@ Make a calculator that performs addition, subtraction, multiplication and divisi
 - add button for "to the power of" and functionality
 - add "backspace" button and functionality
 - add "square root" button and functionality
+- add rounding of long decimal answers to 5 decimal places
+- put limit on amount of decimal places a user can input - 2 decimal places
+- display an "Error" message if the user tries to divide by 0
