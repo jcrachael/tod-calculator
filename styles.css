@@ -111,11 +111,11 @@ p, button {
     grid-column-end: 1;
 }
 
-#btn-2, #btn-0, #btn-5 ,#btn-8 {
+#btn-2, #btn-0, #btn-5, #btn-8, #btn-power {
     grid-column-start: 2;
     grid-column-end: 2;
 }
-#btn-3, #btn-6, #btn-9  {
+#btn-3, #btn-6, #btn-9, #btn-sqrt  {
     grid-column-start: 3;
     grid-column-end: 3;
 }
@@ -123,4 +123,18 @@ p, button {
 #btn-add, #btn-subtract, #btn-divide, #btn-multiply, #btn-equals {
     grid-column-start: 4;
     grid-column-end: 4;
+}
+
+#btn-power {
+    font-size: 32pt;
+}
+
+sup {
+    font-size: 18pt;
+}
+
+#btn-sqrt {
+    font-family: Tahoma, sans-serif;
+    font-weight: 400;
+    font-size: 32pt;
 }

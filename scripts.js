@@ -14,7 +14,9 @@ class Calculator {
     };
 
     appendNumber(number) {
-        if (number === '.' && this.currentOperand.includes('.')) return 
+        if (number === '.' && this.currentOperand.includes('.')) {
+            return 
+        };
         this.currentOperand = this.currentOperand.toString() + number.toString();
     };
 
@@ -48,12 +50,30 @@ class Calculator {
             case '÷':
                 computation = prev / current;
                 break;
+            case '^':
+                computation = prev**current;
+                break;
+            case '√':
+                // x root y where x = prev; y = current
+                // x^x = root x
+                let rootprev = Math.sqrt(prev*prev);
+                // sqrt y
+                let rootcurrent = Math.sqrt(current);
+                // root x * root y = answer
+                computation = rootprev*rootcurrent
+                break;
             default:
                 return;
         }
-        this.previousOperand = computation;
+        this.previousOperand = '';
         this.operation = undefined;
-        this.currentOperand = '';
+        
+        let stringComp = computation.toString();
+        if (stringComp.includes('.')) {
+            this.currentOperand = computation.toFixed(2);
+        } else {
+            this.currentOperand = computation;
+        }
     };
 
     getDisplayNumber(number) {
