@@ -1,5 +1,6 @@
 # Calculator
 View live demo: https://jcrachael.github.io/tod-calculator/
+
 The Odin Project Foundations course Calculator project: https://www.theodinproject.com/lessons/foundations-calculator
 
 # Goal
