@@ -18,22 +18,38 @@ p, button {
 
 #calculator {
     width: 500px;
-    height: 650px;
-    border: 1px black solid;
+    height: 670px;
+    border: 2px #333 solid;
     margin: auto;
     border-radius: 25px;
     background-color: #ddd;
+    background-image: -webkit-linear-gradient(70deg, rgba(17, 17, 17, 0.329) 30%, transparent 55%),-webkit-linear-gradient(top, rgba(136, 136, 136, 0.301), transparent);
+    box-shadow:  0px 10px 5px 5px rgba(0,0,0,0.2) ;
 }
 
 #screen-container {
-    margin-top:15px;
+    margin-top:20px;
     margin-left: 15px;
     width: 470px;
     height:150px;
-    border: 1px black solid;
+    border: 2px #333 solid;
     border-radius: 25px;
+    background-image: -webkit-linear-gradient(100deg, rgba(17, 17, 17, 0.1) 30%, transparent 70%),-webkit-linear-gradient(top, rgba(233, 233, 233, 0.301), transparent);
     background-color: rgb(149, 179, 137);
+	background-image: linear-gradient(rgb(107, 133, 97),rgb(149, 179, 137));
+    box-shadow:  -10px -10px 15px 5px rgba(0, 0, 0, 0.178) inset;
 }
+
+#screen-container::before {
+    content: '';
+	position: absolute;
+	border-radius: 25px;
+	width: 470px;
+	height: 150px;
+    background-image: -webkit-linear-gradient(283deg, rgba(255, 255, 255, 0.1) 50%, transparent 55%),-webkit-linear-gradient(top, rgba(255, 255, 255, 0.534), transparent);
+    
+}
+
 
 #screen {
     margin-top: 12px;
@@ -42,6 +58,7 @@ p, button {
     height: 125px;
     text-align: right;
     overflow: auto;
+    
 }
 
 .screentext {
@@ -51,7 +68,7 @@ p, button {
 
 .previous-operand {
     font-size: 24pt;
-    color:rgb(90, 90, 90);
+    color:rgba(0, 0, 0, 0.726);
     min-height: 26pt;
     
 }
@@ -62,10 +79,12 @@ p, button {
     font-size: 36pt;
     position: relative;
     bottom: 0px;
+    color: rgba(0, 0, 0, 0.726);
 }
 
 #grid {
-    border: 1px black solid;
+    border: 2px #333 solid;
+    padding: 0px 0px 10px 0px; 
     border-radius: 25px;
     width: 445px;
     height: 450px;
@@ -76,10 +95,12 @@ p, button {
     grid-template-rows: 4;
     column-gap: normal;
     padding-left: 20px;
-    background-color: #888;
+    background-color: rgb(160, 160, 160);
+    background-image: -webkit-linear-gradient(283deg, rgba(17, 17, 17, 0.1) 50%, transparent 55%),-webkit-linear-gradient(top, rgba(233, 233, 233, 0.301), transparent);
+    box-shadow:  0px 0px 15px 5px rgba(43, 43, 43, 0.541) inset;
 }
 
-.grid-item {
+button {
     align-self: center;
     text-align: center;
     height: 75px;
@@ -89,11 +110,27 @@ p, button {
     font-size: 36pt;
     font-weight: bold;
     cursor: pointer;
-    background-color: #ddd;
+    background-color: rgb(221, 221, 221);
+    background-image: -webkit-linear-gradient(283deg, rgba(17, 17, 17, 0.1) 50%, transparent 55%),-webkit-linear-gradient(top, rgba(233, 233, 233, 0.301), transparent);
+    box-shadow: 0 0 0 1px #333333 inset,0 0 0 2px rgba(92, 92, 92, 0.15) inset,0 4px 0 0 #333333,0 4px 0 1px rgba(0, 0, 0, 0.4),0 4px 4px 1px rgba(0, 0, 0, 0.5);
+
+    -webkit-transition: all linear;
+    backdrop-filter: blur(2px);
+    transition: transform 
+      var(--transition-duration) 
+      var(--transition-easing);
+
+    overflow: hidden;
+
+    
 }
 
 .grid-item:active {
+    transform: translateY(4px);
     background-color: #888;
+    box-shadow: 0 0 0 1px #333333 inset,0 0 0 2px rgba(92, 92, 92, 0.15) inset,0 2px 0 0 #333333,0 2px 0 1px rgba(0, 0, 0, 0.4),0 2px 2px 1px rgba(0, 0, 0, 0.5);
+    
+    
 }
 
 .number {
@@ -138,3 +175,4 @@ sup {
     font-weight: 400;
     font-size: 32pt;
 }
+
