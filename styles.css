@@ -2,7 +2,9 @@
 
 body {
     font-family: 'Orbitron', 'Courier New', Courier, monospace;
-    background-color: rgb(179, 179, 179);
+    background: rgb(184,184,184);
+background: radial-gradient(circle, rgba(184,184,184,1) 0%, rgba(111,111,111,1) 100%);
+box-sizing: border-box;
 }
 
 h1 {
@@ -19,12 +21,13 @@ p, button {
 #calculator {
     width: 500px;
     height: 670px;
-    border: 2px #333 solid;
     margin: auto;
     border-radius: 25px;
     background-color: #ddd;
-    background-image: -webkit-linear-gradient(70deg, rgba(17, 17, 17, 0.329) 30%, transparent 55%),-webkit-linear-gradient(top, rgba(136, 136, 136, 0.301), transparent);
-    box-shadow:  0px 10px 5px 5px rgba(0,0,0,0.2) ;
+    background-image: -webkit-linear-gradient(126deg, rgba(17, 17, 17, 0.411) 30%, transparent 55%),-webkit-linear-gradient(top, rgba(136, 136, 136, 0.411), transparent);
+    box-shadow: 30px 30px 20px 2px rgba(0,0,0,0.2), -5px -5px 10px 5px rgba(0,0,0,0.8) inset;
+    border-top: 1px rgba(0,0,0,0) solid;
+
 }
 
 #screen-container {
@@ -32,12 +35,10 @@ p, button {
     margin-left: 15px;
     width: 470px;
     height:150px;
-    border: 2px #333 solid;
     border-radius: 25px;
-    background-image: -webkit-linear-gradient(100deg, rgba(17, 17, 17, 0.1) 30%, transparent 70%),-webkit-linear-gradient(top, rgba(233, 233, 233, 0.301), transparent);
-    background-color: rgb(149, 179, 137);
-	background-image: linear-gradient(rgb(107, 133, 97),rgb(149, 179, 137));
-    box-shadow:  -10px -10px 15px 5px rgba(0, 0, 0, 0.178) inset;
+    background: rgb(107,133,97);
+background: linear-gradient(135deg, rgba(107,133,97,1) 25%, rgba(149,179,137,1) 39%, rgba(255,255,255,1) 45%, rgba(149,179,137,1) 49%, rgba(149,179,137,1) 50%, rgba(255,255,255,1) 55%, rgba(149,179,137,1) 58%, rgba(107,133,97,1) 69% );
+box-shadow:  -10px -10px 15px 5px rgba(0, 0, 0, 0.178) inset, 0px 0px 3px 4px rgba(12, 63, 8, 0.7) inset, 1px 1px 2px 4px rgba(255,255,255,0.3);
 }
 
 #screen-container::before {
@@ -46,7 +47,7 @@ p, button {
 	border-radius: 25px;
 	width: 470px;
 	height: 150px;
-    background-image: -webkit-linear-gradient(283deg, rgba(255, 255, 255, 0.1) 50%, transparent 55%),-webkit-linear-gradient(top, rgba(255, 255, 255, 0.534), transparent);
+    background-image: -webkit-linear-gradient(283deg, rgba(255, 255, 255, 0.1) 50%, transparent 55%),-webkit-linear-gradient(top, rgba(255, 255, 255, 0.534), transparent 50%);
     
 }
 
@@ -69,8 +70,9 @@ p, button {
 .previous-operand {
     font-size: 24pt;
     color:rgba(0, 0, 0, 0.726);
-    min-height: 26pt;
-    
+    min-height: 30pt;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .current-operand {
@@ -83,8 +85,8 @@ p, button {
 }
 
 #grid {
-    border: 2px #333 solid;
-    padding: 0px 0px 10px 0px; 
+    border: 1px rgba(51, 51, 51, 0.616) solid transparent;
+    padding: 5px 0px 10px 0px; 
     border-radius: 25px;
     width: 445px;
     height: 450px;
@@ -95,9 +97,9 @@ p, button {
     grid-template-rows: 4;
     column-gap: normal;
     padding-left: 20px;
-    background-color: rgb(160, 160, 160);
-    background-image: -webkit-linear-gradient(283deg, rgba(17, 17, 17, 0.1) 50%, transparent 55%),-webkit-linear-gradient(top, rgba(233, 233, 233, 0.301), transparent);
-    box-shadow:  0px 0px 15px 5px rgba(43, 43, 43, 0.541) inset;
+    background: rgb(160,160,160);
+    background: radial-gradient(circle, rgba(160,160,160,1) 50%, rgba(51,51,51,0.5) 100%);
+    box-shadow:  0px 0px 15px 5px rgba(43, 43, 43, 0.541) inset, 0px 0px 4px 4px rgba(0,0,0,0.2) inset, 0px 0px 3px 5px rgba(255,255,255,0.3);
 }
 
 button {
@@ -105,14 +107,19 @@ button {
     text-align: center;
     height: 75px;
     width: 75px;
-    border: 1px black solid;
+    border: none;
     border-radius: 15px;
     font-size: 36pt;
     font-weight: bold;
     cursor: pointer;
     background-color: rgb(221, 221, 221);
+   
+    /* gradient background */
+
     background-image: -webkit-linear-gradient(283deg, rgba(17, 17, 17, 0.1) 50%, transparent 55%),-webkit-linear-gradient(top, rgba(233, 233, 233, 0.301), transparent);
-    box-shadow: 0 0 0 1px #333333 inset,0 0 0 2px rgba(92, 92, 92, 0.15) inset,0 4px 0 0 #333333,0 4px 0 1px rgba(0, 0, 0, 0.4),0 4px 4px 1px rgba(0, 0, 0, 0.5);
+    
+    
+    box-shadow: 0 0 0 1px rgba(92, 92, 92, 0.15) inset,0 4px 0 0 #333333,0 4px 0 1px rgba(0, 0, 0, 0.2),0 4px 4px 1px rgba(0, 0, 0, 0.2), 1px 1px 2px 4px rgba(255,255,255,0.5) inset;
 
     -webkit-transition: all linear;
     backdrop-filter: blur(2px);
@@ -128,7 +135,9 @@ button {
 .grid-item:active {
     transform: translateY(4px);
     background-color: #888;
-    box-shadow: 0 0 0 1px #333333 inset,0 0 0 2px rgba(92, 92, 92, 0.15) inset,0 2px 0 0 #333333,0 2px 0 1px rgba(0, 0, 0, 0.4),0 2px 2px 1px rgba(0, 0, 0, 0.5);
+    background-image: -webkit-linear-gradient(283deg,  rgba(233, 233, 233, 0.301) 50%, transparent 55%),-webkit-linear-gradient(top, rgba(17, 17, 17, 0.1), transparent);
+    box-shadow: 0 0 0 0px #333333 inset,0 0 0 2px rgba(92, 92, 92, 0.15) inset,0 2px 0 0 #333333,0 2px 0 1px rgba(0, 0, 0, 0.4),0 2px 2px 1px rgba(0, 0, 0, 0.5), 1px 1px 2px 4px rgba(255,255,255,0.1) inset;
+    
     
     
 }
@@ -137,8 +146,15 @@ button {
     color: #333;
 }
 
+.number:active {
+    color: rgba(0, 0, 0, 0.788);
+}
+
 .operator {
     color: rgb(255, 67, 67);
+}
+.operator:active {
+    color: rgb(165, 34, 34);
 }
 
 
